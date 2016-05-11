@@ -1,10 +1,8 @@
-var path = require('path');
-var config = require('../config');
-var utils = require('./utils');
-var projectRoot = path.resolve(__dirname, '../');
+import path from 'path';
+import config from '../config';
+import * as utils from './utils';
 
-
-module.exports = {
+export default {
   entry: {
     app: './src/main.js'
   },
@@ -14,16 +12,12 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
-    fallback: [path.join(__dirname, '../node_modules')],
-    alias: {
-      'src': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
-    }
+    extensions: [ '', '.js', '.vue' ],
+    fallback: [ path.join(__dirname, '../node_modules') ],
+    alias: config.basic.alias
   },
   resolveLoader: {
-    fallback: [path.join(__dirname, '../node_modules')]
+    fallback: [ path.join(__dirname, '../node_modules') ]
   },
   module: {
     loaders: [
@@ -34,7 +28,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        include: projectRoot,
+        include: config.basic.projectRoot,
         exclude: /node_modules/
       },
       {

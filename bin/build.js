@@ -1,25 +1,21 @@
 // https://github.com/shelljs/shelljs
-require('shelljs/global');
+import 'shelljs/global';
 env.NODE_ENV = 'production';
 
-var path = require('path');
-var fs = require('fs-extra');
-var config = require('../config');
-var ora = require('ora');
-var webpack = require('webpack');
-var gzipSize = require('gzip-size');
-var webpackConfig = require('./webpack.prod.conf');
 
-console.log(
-  '  Tip:\n' +
-  '  Built files are meant to be served over an HTTP server.\n' +
-  '  Opening index.html over file:// won\'t work.\n'
-);
+import path from 'path';
+import fs from 'fs-extra';
+import ora from 'ora';
+import webpack from 'webpack';
+import gzipSize from 'gzip-size';
+import config from '../config';
+import webpackConfig from '../configs/webpack.prod.conf';
 
-var spinner = ora('building for production...');
+
+const spinner = ora('building for production...');
 spinner.start();
 
-var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory);
+const assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory);
 rm('-rf', assetsPath);
 mkdir('-p', assetsPath);
 cp('-R', 'static/', assetsPath);
@@ -34,9 +30,9 @@ webpack(webpackConfig, function (err, stats) {
       chunks: false,
       chunkModules: false
     }) + '\n');
-  
 
-  var files = [];
+
+  let files = [];
   fs.walk(path.join(__dirname, '../dist'))
     .on('data', function (item) {
       files.push(item.path);

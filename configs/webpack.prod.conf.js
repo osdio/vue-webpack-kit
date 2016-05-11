@@ -1,14 +1,15 @@
-var config = require('../config');
-var utils = require('./utils');
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var baseWebpackConfig = require('./webpack.base.conf');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+import webpack from 'webpack';
+import merge from 'webpack-merge';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import baseWebpackConfig from './webpack.base.conf';
+import config from '../config';
+import * as utils from './utils';
 
-module.exports = merge(baseWebpackConfig, {
+
+export default merge(baseWebpackConfig, {
   module: {
-    loaders: utils.styleLoaders({sourceMap: config.build.productionSourceMap, extract: true})
+    loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
