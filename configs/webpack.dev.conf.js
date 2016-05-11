@@ -13,7 +13,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 
 export default merge(baseWebpackConfig, {
   module: {
-    loaders: utils.styleLoaders()
+    loaders: utils.styleLoaders({ sourceMap: true, extract: false })
   },
   devtool: '#eval-source-map',
   plugins: [

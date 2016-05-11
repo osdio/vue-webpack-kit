@@ -44,7 +44,6 @@ export function cssLoaders(options) {
 }
 
 
-// 用于将组建中的style分离出到一个单独的css中
 export function styleLoaders(options) {
   var output = [];
   var loaders = exports.cssLoaders(options);
