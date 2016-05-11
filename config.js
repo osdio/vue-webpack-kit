@@ -1,5 +1,5 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path');
+const path = require('path');
 
 module.exports = {
   build: {
@@ -7,10 +7,10 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, 'dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    productionSourceMap: false
+    productionSourceMap: false,
   },
   dev: {
     port: 8080,
-    proxyTable: {}
-  }
+    proxyTable: {},
+  },
 };
