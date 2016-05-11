@@ -1,4 +1,3 @@
-/* eslint-disable */
 // https://github.com/shelljs/shelljs
 require('shelljs/global');
 env.NODE_ENV = 'production';
@@ -35,6 +34,8 @@ webpack(webpackConfig, function (err, stats) {
       chunks: false,
       chunkModules: false
     }) + '\n');
+  
+
   var files = [];
   fs.walk(path.join(__dirname, '../dist'))
     .on('data', function (item) {
