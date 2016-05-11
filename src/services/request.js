@@ -8,13 +8,15 @@ const { apiPreffix, defaultHttpContentType } = config;
 let defaultHeaders = {
   'Accept': 'application/json'
 };
-
+let defaultType = 'json';
 if (defaultHttpContentType && defaultHttpContentType !== 'default') {
   defaultHeaders = {
     ...defaultHeaders,
     'Content-Type': defaultHttpContentType
-  }
+  };
+  defaultType = 'form';
 }
+
 
 const defaultOptions = {
   credentials: 'same-origin'
@@ -53,6 +55,16 @@ function filterData(data) {
 }
 
 
+// 转换成form表单形式
+function toForm(body) {
+  let form = new FormData();
+  Object.keys(body).forEach(key=> {
+    form.append(key, body[ key ]);
+  });
+  return form;
+}
+
+
 export function get({ url, params, headers = {}, options={} }) {
   if (url.indexOf('/') === 0) {
     url = apiPreffix + url;
@@ -77,13 +89,13 @@ export function get({ url, params, headers = {}, options={} }) {
 }
 
 
-export function post({ url, body, headers = {}, options={} }) {
+export function post({ url, body, headers = {}, options={}, type='json', type = defaultType }) {
   if (url.indexOf('/') === 0) {
     url = apiPreffix + url;
   }
   let fetchOptions = {
     method: 'POST',
-    body: JSON.stringify(body),
+    body: type == 'json' ? JSON.stringify(body) : toForm(body),
     headers: {
       ...defaultHeaders,
       headers
