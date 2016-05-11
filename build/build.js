@@ -42,8 +42,8 @@ webpack(webpackConfig, function (err, stats) {
     })
     .on('end', function () {
       files.forEach(function (item) {
-        if (/\w*\.(js|css|html)/.test(item)) {
-          console.log(item.replace(path.join(__dirname, '../dist/static'), ''), gzipSize.sync(fs.readFileSync(item)));
+        if (/\w*\.(js|css)/.test(item)) {
+          console.log(item.replace(assetsPath, ''), gzipSize.sync(fs.readFileSync(item)));
         }
       });
     });
