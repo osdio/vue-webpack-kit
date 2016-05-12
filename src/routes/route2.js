@@ -1,7 +1,9 @@
-import C from '../containers/C.vue';
-
 export default {
   c: {
-    component: C
+    component: (resolve)=> {
+      require([ '../containers/C.vue' ], (component)=> {
+        resolve(component);
+      });
+    }
   }
 }

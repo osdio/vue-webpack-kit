@@ -1,11 +1,14 @@
-import A from '../containers/A.vue';
-import B from '../containers/B.vue';
-
 export default {
   a: {
-    component: A
+    component: function (resolve) {
+      require([ '../containers/A.vue' ], (component)=> {
+        resolve(component);
+      });
+    }
   },
   b: {
-    component: B
+    component: function (resolve) {
+      require([ '../containers/B.vue' ], resolve);
+    }
   }
 }
