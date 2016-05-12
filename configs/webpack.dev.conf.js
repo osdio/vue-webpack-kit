@@ -15,7 +15,7 @@ export default merge(baseWebpackConfig, {
   module: {
     loaders: utils.styleLoaders({ sourceMap: true, extract: false })
   },
-  devtool: '#eval-source-map',
+  devtool: '#eval',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

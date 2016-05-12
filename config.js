@@ -27,6 +27,7 @@ export default {
       'fetch-ie8',
       'query-string',
       'vue-router',
+      'normalize.css'
     ],
     common: [
       'utils',
