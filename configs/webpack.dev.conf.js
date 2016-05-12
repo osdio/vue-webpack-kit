@@ -3,6 +3,7 @@ import merge from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as utils from './utils';
 import baseWebpackConfig from './webpack.base.conf';
+import config from '../config';
 
 
 // add hot-reload related code to entry chunks
@@ -14,6 +15,9 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 export default merge(baseWebpackConfig, {
   module: {
     loaders: utils.styleLoaders({ sourceMap: true, extract: false })
+  },
+  output: {
+    publicPath: `http://${config.dev.hostname}:${config.dev.port}/`
   },
   devtool: '#eval',
   plugins: [

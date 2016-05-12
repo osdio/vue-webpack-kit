@@ -1,4 +1,5 @@
 import path from 'path';
+import devIp from 'dev-ip';
 
 
 let alias = {
@@ -49,6 +50,7 @@ export default {
   },
   dev: {
     port: 8080,
+    hostname: devIp()[ 0 ] || 'localhost',
     proxyTable: {}
   }
 };

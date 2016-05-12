@@ -9,6 +9,10 @@
       <a v-link="{path: '/b'}">Page B</a>
       <a v-link="{path: '/c'}">Page C</a>
     </p>
+    <p>
+      count: {{count}}
+    </p>
+    <a @click="add()">add</a>
     <router-view></router-view>
   </div>
 </template>
@@ -18,6 +22,16 @@
   export default {
     components: {
       Hello
+    },
+    data: function () {
+      return {
+        count: 2
+      }
+    },
+    methods: {
+      add: function () {
+        this.count = this.count + 1;
+      }
     }
   };
 </script>
