@@ -1,10 +1,14 @@
 import path from 'path';
+import webpack from 'webpack';
 import config from '../config';
 import * as utils from './utils';
 
+
 export default {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    common: utils.getCommonDependencies(),
+    vendor: config.basic.vendor
   },
   output: {
     path: config.build.assetsRoot,
@@ -57,6 +61,9 @@ export default {
       }
     ]
   },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendor', `${path.resolve(config.build.assetsSubDirectory, config.build.assetsPaths.js)}/[name].[hash].js`)
+  ],
   vue: {
     loaders: utils.cssLoaders({
       sourceMap: true
