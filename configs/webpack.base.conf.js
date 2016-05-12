@@ -62,7 +62,7 @@ export default {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', `${path.resolve(config.build.assetsSubDirectory, config.build.assetsPaths.js)}/[name].[hash].js`)
+    new webpack.optimize.CommonsChunkPlugin('vendor', `${path.resolve(config.build.assetsSubDirectory, config.build.assetsPaths.js).replace(/^\//, '')}/[name].[hash].js`)
   ],
   vue: {
     loaders: utils.cssLoaders({
