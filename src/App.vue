@@ -4,15 +4,14 @@
     <h2>
       Hello world, Vue.js
     </h2>
+    <hello>
+
+    </hello>
     <p>
       <a v-link="{path: '/a'}">Page A</a>
       <a v-link="{path: '/b'}">Page B</a>
       <a v-link="{path: '/c'}">Page C</a>
     </p>
-    <p>
-      count: {{count}}
-    </p>
-    <a @click="add()">add</a>
     <router-view></router-view>
   </div>
 </template>
@@ -30,7 +29,7 @@
     },
     methods: {
       add: function () {
-        this.count = this.count + 1;
+        this.count = this.count + 3;
       }
     }
   };

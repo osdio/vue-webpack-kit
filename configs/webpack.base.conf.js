@@ -6,7 +6,7 @@ import * as utils from './utils';
 
 export default {
   entry: {
-    app: './src/main.js',
+    app: ['./src/main.js'],
     common: utils.getCommonDependencies(),
     vendor: config.basic.vendor
   },
@@ -61,9 +61,6 @@ export default {
       }
     ]
   },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', `${path.resolve(config.build.assetsSubDirectory, config.build.assetsPaths.js).replace(/^\//, '')}/[name].[hash].js`)
-  ],
   vue: {
     loaders: utils.cssLoaders({
       sourceMap: true

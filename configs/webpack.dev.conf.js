@@ -8,7 +8,7 @@ import config from '../config';
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-  baseWebpackConfig.entry[ name ] = [ './bin/dev-client' ].concat(baseWebpackConfig.entry[ name ])
+  baseWebpackConfig.entry[ name ] = [ './bin/dev-client.js' ].concat(baseWebpackConfig.entry[ name ])
 });
 
 
@@ -21,6 +21,7 @@ export default merge(baseWebpackConfig, {
   },
   devtool: '#eval',
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendor', `[name].js`),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"development"'

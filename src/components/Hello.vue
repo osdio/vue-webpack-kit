@@ -1,20 +1,25 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>
+      count: {{count}}
+    </h1>
+    <a @click="add()">add</a>
+
   </div>
 </template>
 
 <script>
   export default {
-    data() {
+    data: function () {
       return {
-        // note: changing this line won't causes changes
-        // with hot-reload because the reloaded component
-        // preserves its current state and we are modifying
-        // its initial state.
-        msg: 'Hello World!',
-      };
+        count: 2
+      }
     },
+    methods: {
+      add: function () {
+        this.count = this.count + 1000;
+      }
+    }
   };
 </script>
 

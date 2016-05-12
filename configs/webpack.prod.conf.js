@@ -1,3 +1,4 @@
+import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -29,6 +30,8 @@ export default merge(baseWebpackConfig, {
         NODE_ENV: '"production"'
       }
     }),
+
+    new webpack.optimize.CommonsChunkPlugin('vendor', `${path.resolve(config.build.assetsSubDirectory, config.build.assetsPaths.js).replace(/^\//, '')}/[name].[hash].js`),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
