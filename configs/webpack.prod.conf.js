@@ -32,7 +32,7 @@ export default merge(baseWebpackConfig, {
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
-      name: [ 'vendor', 'common' ],
+      name: [ 'vendor' ],
       filename: `${path.resolve(config.build.assetsSubDirectory, config.build.assetsPaths.js).replace(/^\//, '')}/[name].[hash].js`
     }),
     new webpack.optimize.UglifyJsPlugin({
