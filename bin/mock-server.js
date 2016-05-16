@@ -4,6 +4,7 @@ var morgan = require('morgan');
 var fs = require('fs-extra');
 var path = require('path');
 var mockDir = path.resolve(__dirname, '../mock');
+var config = require('../config');
 var files = fs.readdirSync(mockDir);
 var routers = {};
 
@@ -49,7 +50,7 @@ function server(routers) {
     app.use(routerConfig.config.path, router);
   });
 
-  app.listen(3001, function () {
-    console.log('Mock server running on 3001');
+  app.listen(config.dev.mockProt, function () {
+    console.log('Mock server running on ' + config.dev.mockProt);
   });
 }

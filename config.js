@@ -1,8 +1,8 @@
-import path from 'path';
-import devIp from 'dev-ip';
+var path = require('path');
+var devIp = require('dev-ip');
 
 
-let alias = {
+var alias = {
   src: './src',
   assets: './src/assets',
   components: './src/components',
@@ -12,11 +12,11 @@ let alias = {
 };
 
 for (var key in alias) {
-  alias[ key ] = path.join(__dirname, alias[ key ]);
+  alias[key] = path.join(__dirname, alias[key]);
 }
 
 
-export default {
+module.exports = {
   basic: {
     projectRoot: __dirname,
     src: path.join(__dirname, './src'),
@@ -50,7 +50,8 @@ export default {
   },
   dev: {
     port: 8080,
-    hostname: devIp()[ 0 ] || 'localhost',
-    proxyTable: {}
+    hostname: devIp()[0] || 'localhost',
+    proxyTable: {},
+    mockProt: 3003
   }
 };
